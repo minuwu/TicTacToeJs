@@ -48,10 +48,14 @@ function win(){
         if( boxes[a].innerText && boxes[b].innerText && boxes[c].innerText){
             if(boxes[a].innerText == boxes[b].innerText && boxes[b].innerText==boxes[c].innerText){
                 console.log("winner found");
+                boxes[a].classList.add("glow");
+                boxes[b].classList.add("glow");
+                boxes[c].classList.add("glow");
                 for(let box of boxes){
                     ded(box);
                 }
                 msg.innerText = `Winner is ${boxes[a].innerText}`;
+                cnt = 0;
 
             }
         }
@@ -64,6 +68,7 @@ function ded(box){
 function alive(box){
     box.disabled = false;
     box.style.backgroundColor = "#E5FCF5"
+    box.classList.remove("glow");
 }
 reset.addEventListener("click",() =>{
     for(let box of boxes){
@@ -73,6 +78,6 @@ reset.addEventListener("click",() =>{
     turn = true;
     msg.innerText = "Tic Tac Toe";
     cnt = 0;
-})
+});
 
 
